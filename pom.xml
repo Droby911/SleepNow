@@ -6,7 +6,7 @@
 
     <groupId>org.flyaga</groupId>
     <artifactId>SleepNow</artifactId>
-    <version>1.0</version>
+    <version>WIP-0.1</version>
     <packaging>jar</packaging>
 
     <name>SleepNow</name>
