@@ -1,0 +1,6 @@
+name: SleepNow
+version: ${project.version}
+main: org.flyaga.sleepnow.SleepNow
+api-version: 1.16
+authors: [flyaga]
+description: Много игроков в кровати? Значит, пора скипать время.
