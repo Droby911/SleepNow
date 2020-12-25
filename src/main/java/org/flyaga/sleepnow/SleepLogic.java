@@ -10,7 +10,7 @@ import static org.bukkit.Bukkit.*;
 public class SleepLogic {
     public static int current_sleeping_players_count; // тут будет число игроков, которые на данный момент спят
     public static double players_count_to_skip; // тут будет число игроков, необходимое для скипа ночи
-    public static List<LivingEntity> current_sleeping_players_entity = new ArrayList<LivingEntity>(); // тут будет список игроков, которые спят в кровати
+    public static List<LivingEntity> current_sleeping_players_entity = new ArrayList<>(); // тут будет список игроков, которые спят в кровати
     public static List<Player> players; // тут будет список игроков в онлайне
     public static World world = getServer().getWorld("world"); // тут получаем мир по его названию
     public static LivingEntity playerEnt; // объявляем энтити, этим энтити будет игрок
@@ -50,8 +50,8 @@ public class SleepLogic {
                 if (isSleeping == true) { // если он спит
                     if (!current_sleeping_players_entity.isEmpty()) { // и список из спящих игроков НЕ пуст
                         for (LivingEntity sleeping : current_sleeping_players_entity) { // циклом преобразуем список спящих энтити в один энтити
-                            if (playerEnt.getName() == sleeping.getName()) { // если ник игрока равен нику спящего энтити
-                                continue; // тогда делаем следующую итерацию цикла, так как текущий игрок до сих пор лежит в кровати
+                            if (playerEnt.getName().equals(sleeping.getName())) { // если ник игрока равен нику спящего энтити
+                                return; // тогда уходим
                             }
                         }
                     }
@@ -70,8 +70,6 @@ public class SleepLogic {
         current_sleeping_players_entity.add(playerEnt);
         current_sleeping_players_count = + 1;
         players_count_to_skip = Math.floor(players.size() / PlayersDivision); // делим количество игроков на PlayersDivision и округляем результат в МЕНЬШУЮ сторону
-        broadcastMessage("current_sleeping_players_count: " + current_sleeping_players_count);
-        broadcastMessage("players_count_to_skip: " + (int)players_count_to_skip);
         if(current_sleeping_players_count >= (int)players_count_to_skip){ // если количество спящих игроков больше или равно количеству игроков, необходимых для скипа
             world.setTime(0);
             current_sleeping_players_count = 0;
