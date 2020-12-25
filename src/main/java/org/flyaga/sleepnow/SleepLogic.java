@@ -18,8 +18,6 @@ public class SleepLogic {
     public static long delay = 20L; // задержка плагина (в тиках)
 
     public static void logicStart() {
-        players = world.getPlayers(); // получаем всех игроков в онлайне в список с типом Player (не путать с LivingEntity)
-        players_count_to_skip = Math.floor(players.size() / ToEightPlayersDivision);
         BukkitScheduler scheduler = getServer().getScheduler();
         scheduler.scheduleSyncRepeatingTask(SleepNow.getInstance(), new Runnable() { // делаем что-то типа while(true) с задержкой
             @Override
@@ -35,6 +33,8 @@ public class SleepLogic {
 
 
     public static void playerManipulation(){
+        players = world.getPlayers(); // получаем всех игроков в онлайне в список с типом Player (не путать с LivingEntity)
+        players_count_to_skip = Math.floor(players.size() / ToEightPlayersDivision);
         if (players.size() >= 3 && players.size() <= 8) { // если игроков больше или равно 4, и меньше или равно 8
             for (Player players_for : players) { // циклом преобразуем список игроков в одного игрока
                 playerEnt = players_for; // тут один игрок
