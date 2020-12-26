@@ -86,14 +86,18 @@ public class SleepLogic {
     }
 
     public static void displayMessage(LivingEntity playerEnt, int what_display){
-        if(what_display == 1){
+        String operators[] = new String[]{"{", "}", "0", "1"};
+        if(what_display == 1){ // sleeping-not-enough-players-message
             int to_skip = (int)players_count_to_skip - current_sleeping;
             if(to_skip > 0){
-                broadcastMessage("Игрок" + " " + playerEnt.getName() + " " + "лег в кровать. Для скипа ночи нужно еще" + " " + to_skip + " " + "игроков.");
+                String msg = SleepLang.sleeping_not_enough_players_message.replaceAll("(?:\\{0)(?:})", playerEnt.getName());
+                msg = msg.replaceAll("(?:\\{1)(?:})", Integer.toString(to_skip));
+                broadcastMessage(msg);
             }
         }
-        if(what_display == 2){
-            broadcastMessage("Игрок" + " " + playerEnt.getName() + " " + "спит, скипаем ночь...");
+        if(what_display == 2){ // sleeping-enough-players-message
+            String msg = SleepLang.sleeping_enough_players_message.replaceAll("(?:\\{0)(?:})", playerEnt.getName());
+            broadcastMessage(msg);
         }
     }
 

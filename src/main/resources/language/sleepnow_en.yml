@@ -1,0 +1,5 @@
+# {0} - player nickname
+# {1} - need players to sleep
+# I need help with the correct translation - 0x115
+sleeping-not-enough-players-message: "Player {0} went to sleep. For night skip need {1} players."
+sleeping-enough-players-message: "Player {0} went to sleep, skip the night..."
