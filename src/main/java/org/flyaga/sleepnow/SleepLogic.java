@@ -115,12 +115,24 @@ public class SleepLogic {
             if (to_skip > 0) {
                 String msg = SleepLang.sleeping_not_enough_players_message.replaceAll("(?:\\{0)(?:})", playerEnt.getName()); // заменяем {0} в конфиге
                 msg = msg.replaceAll("(?:\\{1)(?:})", Integer.toString(to_skip)); // заменяем {1} в конфиге
+                msg = msg.replaceAll("(&([a-f0-9]))", "\u00A7$2");
+
+                String msgU = "&a---------------------------";
+                msgU = msgU.replaceAll("(&([a-f0-9]))", "\u00A7$2");
+                broadcastMessage(msgU);
                 broadcastMessage(msg); // выводим в чат
+                broadcastMessage(msgU);
             }
         }
         if (what_display == 2) { // sleeping-enough-players-message
             String msg = SleepLang.sleeping_enough_players_message.replaceAll("(?:\\{0)(?:})", playerEnt.getName());
+            msg = msg.replaceAll("(&([a-f0-9]))", "\u00A7$2");
+
+            String msgU = "&3---------------------------";
+            msgU = msgU.replaceAll("(&([a-f0-9]))", "\u00A7$2");
+            broadcastMessage(msgU);
             broadcastMessage(msg);
+            broadcastMessage(msgU);
         }
     }
 }

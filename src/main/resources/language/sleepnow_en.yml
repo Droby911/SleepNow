@@ -3,7 +3,7 @@
 # I need help with the correct translation - 0x115
 
 # if sleeping players not enough to skip night
-sleeping-not-enough-players-message: "Player {0} went to sleep. For night skip need {1} players."
+sleeping-not-enough-players-message: "&aPlayer &7{0} &awent to sleep. For night skip need &7{1} &aplayers."
 
 # if sleeping players enough to skip night
-sleeping-enough-players-message: "Player {0} went to sleep, skip the night..."
+sleeping-enough-players-message: "&3Player &7{0} &3went to sleep, skip the night..."
