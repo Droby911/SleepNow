@@ -10,3 +10,6 @@ silent-mode: "false"
 
 # path: SleepNow/language/file.yml
 language: "sleepnow_en.yml"
+
+# your world name ("world" default)
+world-name: "world"

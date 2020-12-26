@@ -12,7 +12,8 @@ public class SleepLogic {
     public static int current_sleeping = 0; // тут будет число спящих игроков на данный момент
     public static List<LivingEntity> current_sleeping_players_entity = new ArrayList<>(); // тут будет список игроков, которые спят в кровати
     public static List<Player> players; // тут будет список игроков в онлайне
-    public static World world = getServer().getWorld("world"); // тут получаем мир по его названию
+    public static String world_name = SleepNow.getInstance().getSettingsConfig().getString("world-name");
+    public static World world = getServer().getWorld(world_name); // тут получаем мир по его названию
     public static LivingEntity playerEnt; // объявляем энтити, этим энтити будет игрок
     public static long delay = 20L; // задержка плагина (в тиках)
     public static String silent_mode = SleepNow.getInstance().getSettingsConfig().getString("silent-mode"); // получаем значение silent-mode из файла настроек
