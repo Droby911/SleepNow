@@ -16,7 +16,7 @@ What needs to be implemented:
 settings.yml:
 - Configures the output of messages to the chat.
 - Changes the language of the chat output.
-- If you have a non-standard world name, enter your world name in the settings file.
+- If you have a non-default world name, enter your world name in the settings file.
 
 Languages (or if you need just change chat text) for the plugin can be added along the path plugins/SleepNow/language/you_language.yml, similar to the sleepnow_en.yml file (which will be created after the first launch of the plugin).
 
