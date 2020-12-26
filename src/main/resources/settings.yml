@@ -1,4 +1,12 @@
 # SleepNow by 0x115 / flyaga
 # https://github.com/0x115/SleepNow
 
+# silent-mode: display messages to chat.
+# false - display all
+# not-enough - display only if players not enough to skip night
+# enough - display only if players enough to skip night
+# other values - dont display all
+silent-mode: "false"
+
+# path: SleepNow/language/file.yml
 language: "sleepnow_en.yml"

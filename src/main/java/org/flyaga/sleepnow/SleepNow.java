@@ -10,25 +10,25 @@ import java.io.IOException;
 public final class SleepNow extends JavaPlugin {
     private static SleepNow instance;
 
-    ///console
+    ///////// console color /////////
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
-    ///
+    ///////// console color /////////
 
-    /// configs
+    ///////// configs /////////
     private File settingsConfigFile;
     private FileConfiguration settingsConfig;
     private File defaultLangConfigFile; // do not change the default language, it changes in the settings.yml file.
     private FileConfiguration defaultLangConfig;
     private File customLangConfigFile;
     private FileConfiguration customLangConfig;
-    ///
+    ///////// configs /////////
 
     @Override
     public void onEnable() {
         instance = this;
 
-        /// language config
+        ///////// language config /////////
         createSettingsConfig();
         SleepLang sleeplang = new SleepLang();
         if(sleeplang.isCustomLang() == true){
@@ -39,10 +39,11 @@ public final class SleepNow extends JavaPlugin {
             createDefaultLangConfig();
         }
         sleeplang.customMessagesLoad();
-        /// language config
+        ///////// language config /////////
 
         SleepLogic sleeplogic = new SleepLogic();
         sleeplogic.logicStart();
+
         getLogger().info(ANSI_RED + "------------------------" + ANSI_RESET);
         getLogger().info(ANSI_RED + "SleepNow loaded!" + ANSI_RESET);
         getLogger().info(ANSI_RED + "https://github.com/0x115/SleepNow" + ANSI_RESET);
@@ -61,8 +62,7 @@ public final class SleepNow extends JavaPlugin {
     }
 
 
-
-    ///////////////////////////////////
+    ///////// SETTINGS /////////
     public FileConfiguration getSettingsConfig() {
         return this.settingsConfig;
     }
@@ -109,7 +109,7 @@ public final class SleepNow extends JavaPlugin {
             e.printStackTrace();
         }
     }
-    ///////////////////////////////////
+    ///////// SETTINGS /////////
 
 }
 
