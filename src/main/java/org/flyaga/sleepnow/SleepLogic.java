@@ -16,6 +16,7 @@ public class SleepLogic {
     public static LivingEntity playerEnt; // объявляем энтити, этим энтити будет игрок
     public static long delay = 20L; // задержка плагина (в тиках)
     public static String silent_mode = SleepNow.getInstance().getSettingsConfig().getString("silent-mode"); // получаем значение silent-mode из файла настроек
+    public static boolean is_message_displayed = false; // выставляется в true, когда в чат выводится сообщение для скипа ночи. Нужна для того, что бы в чат не было спама из сообщений о пропуске ночи.
 
     public static void logicStart() {
         BukkitScheduler scheduler = getServer().getScheduler();
@@ -25,29 +26,29 @@ public class SleepLogic {
                 long time = world.getTime(); // получаем время в мире
                 boolean isDay = time < 12300 || time > 23850; // условия для определения что есть день, а что есть ночь
                 if (isDay == false) { // если в мире ночь
+                    is_message_displayed = false; // ставим false, т.е обнуляем переменную после того как начнется ночь
                     playerManipulation(); // то начинаем работу
                 }
             }
         }, 0L, delay); // вызываем метод run() каждые *delay* тиков
-}
+    }
 
 
-    public static void playerManipulation(){
+    public static void playerManipulation() {
         players = world.getPlayers(); // получаем всех игроков в онлайне в список с типом Player (не путать с LivingEntity)
-        if(players.size() <= 5){ // если игроков меньше или равно 5
+        if (players.size() >= 8 && players.size() <= 59) { // если игроков больше или равно 7, и меньше или равно 59
+            players_count_to_skip = Math.floor(players.size() / 3); // получяем количество игроков, необходимых для сна путем деления на 3 и округления в меньшкую сторону
+            sleepingPlayerLogic(players); // идем в обработку игроков
+        } else if (players.size() >= 60) { // если игроков больше 60
+            players_count_to_skip = Math.floor(players.size() / 4);
+            sleepingPlayerLogic(players);
+        } else {
             for (Player players_for : players) {
                 updateSingleSleeping(players_for); // вызываем функцию, которая позволит скипнуть ночь даже одному игроку
             }
         }
-        if (players.size() >= 6 && players.size() <= 59) { // если игроков больше или равно 7, и меньше или равно 59
-            players_count_to_skip = Math.floor(players.size() / 3); // получяем количество игроков, необходимых для сна путем деления на 3 и округления в меньшкую сторону
-            sleepingPlayerLogic(players); // идем в обработку игроков
-        }
-        if (players.size() >= 60) { // если игроков больше 60
-            players_count_to_skip = Math.floor(players.size() / 4);
-            sleepingPlayerLogic(players);
-        }
     }
+
 
     public static void sleepingPlayerLogic(List<Player> players) {
         for (Player players_for : players) { // циклом преобразуем список игроков в одного игрока
@@ -75,7 +76,9 @@ public class SleepLogic {
             current_sleeping = 0; // обнуляем списки
             players_count_to_skip = 0; // обнуляем списки
             current_sleeping_players_entity.clear(); // обнуляем списки
-            displayMessage(playerEnt, 2); // показываем сообщение о скипе
+            if(is_message_displayed == false){ // если сообщение о пропуске ночи было показано, то не выводим сообщение, чтобы избежать одинаковых сообщений из-за цикла
+                displayMessage(playerEnt, 2); // показываем сообщение о скипе
+            }
         }
     }
 
@@ -127,12 +130,13 @@ public class SleepLogic {
         if (what_display == 2) { // sleeping-enough-players-message
             String msg = SleepLang.sleeping_enough_players_message.replaceAll("(?:\\{0)(?:})", playerEnt.getName());
             msg = msg.replaceAll("(&([a-f0-9]))", "\u00A7$2");
-
             String msgU = "&3---------------------------";
             msgU = msgU.replaceAll("(&([a-f0-9]))", "\u00A7$2");
             broadcastMessage(msgU);
             broadcastMessage(msg);
             broadcastMessage(msgU);
+            is_message_displayed = true;
         }
     }
+
 }
