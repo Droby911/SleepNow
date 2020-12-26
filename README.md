@@ -14,3 +14,6 @@ settings.yml:
 - Changes the language of the chat output.
 
 Languages (or if you need just change chat text) for the plugin can be added along the path plugins/SleepNow/language/you_language.yml, similar to the sleepnow_en.yml file (which will be created after the first launch of the plugin).
+
+Standard and additional languages can be downloaded here (or create yourself):
+https://github.com/0x115/SleepNow/tree/master/src/main/resources/language
