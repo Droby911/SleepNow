@@ -1,6 +1,6 @@
 # SleepNow
 *translated by Google Translate. If he translated incorrectly, please correct.
-* the source code is explained in Russian, as I did not want to translate the explanations out of fear that it would become unclear what the code means
+*the source code is explained in Russian, as I did not want to translate the explanations out of fear that it would become unclear what the code means
 
 Spigot plugin for Minecraft 1.16.4 
 - Allows you to skip the night if a certain number of people are sleeping on the server at the same time.
