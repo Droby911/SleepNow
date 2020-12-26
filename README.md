@@ -1,10 +1,12 @@
 # SleepNow
-Плагин для Minecraft 1.16.4 (Spigot)
-- Позволяет пропустить ночь, если на сервере одновременно спит определенное количество человек. 
-- Отображает в чате, сколько игроков нужно, чтобы пропустить ночь.
+*translated by Google Translate. If he translated incorrectly, please correct.
 
-Что нужно реализовать:
-1. Вам нужно протестить плагин (на сервере, где больше 4 игроков) и сообщить о багах
-2. Улучшить видимость текста в чате
+Spigot plugin for Minecraft 1.16.4 
+- Allows you to skip the night if a certain number of people are sleeping on the server at the same time.
+- Displays in chat how many players it takes to skip the night.
+- Displays a message in the chat when the required number of players are gathered, and the night is skipped.
 
-*english coming soon
+What needs to be implemented:
+1. Test the plugin (on a server with more than 4 players) and report bugs.
+
+
