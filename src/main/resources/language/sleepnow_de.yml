@@ -1,0 +1,8 @@
+# {0} - Spielername
+# {1} - benötigte Spieler zum Schlafen
+
+# wenn zu wenig Spieler schlafen
+sleeping-not-enough-players-message: "&aSpieler &7{0} &ahat sich hingelegt. Es müssen noch &7{1} &aSpieler schlafen."
+
+# wenn genug Spieler schlafen um die Nacht zu überspringen
+sleeping-enough-players-message: "&3Spieler &7{0} &3hat sich schlafen gelegt. Die Nacht wurde übersprungen..."
